@@ -1,1 +1,38 @@
-<h1>Cocktails#index</h1>
+<div class="banner">
+  <div class="banner-content">
+    <h1>Mister Cocktail</h1>
+    <%= simple_form_for :query,  url: cocktails_path, :method => :get,  wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
+      <%= f.input :search, label: false, placeholder: "Trouvez un cocktail"%>
+      <%= f.button :submit, "Chercher", class:"btn btn-warning" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row cocktail-list">
+    <h2 class="text-center">Nos cocktails</h2>
+     <% if @cocktail_search %>
+     <% @cocktail_search.each do |cocktail| %>
+       <div class="col-xs-12 col-sm-3">
+          <h2 class="card-description"><%= link_to cocktail.name, cocktail_path(cocktail)%></h2>
+        </div>
+    </div>
+    <% end %>
+     <% else %>
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-3">
+      <h2 class="card-description"><%= link_to cocktail.name, cocktail_path(cocktail)%></h2>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+
+
+<%= link_to("Ajoutez un nouvel cocktail", new_cocktail_path, class:"btn btn-success") %>
+
+<div class="footer">
+  <div class="footer-copyright">
+    Codé avec les pieds et le <i class="fa fa-heart"></i> by <%= link_to("Max", "https://twitter.com/narcleet") %>
+  </div>
+</div>

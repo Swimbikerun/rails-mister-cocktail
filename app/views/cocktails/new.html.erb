@@ -1,1 +1,14 @@
-<h1>Cocktails#new</h1>
+<div class="wrapper">
+  <h1 class="text-center create-cocktail"> Créez votre cocktail </h1>
+  <div class="cocktail-form">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4 form">
+        <%= simple_form_for(@cocktail) do |f| %>
+        <%= f.input :name, label: false, placeholder: "Cocktail name"  %>
+        <%= f.input :photo %>
+        <%= f.submit class:"btn btn-primary" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

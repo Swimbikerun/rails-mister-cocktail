@@ -1,2 +1,41 @@
-<h1>Cocktails#show</h1>
-<%= @cocktail.name %>
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <h1 class="cocktail-title text-center"> Cocktail <%= @cocktail.name %></h1>
+    </div>
+  </div>
+
+    <div class="row">
+     <div class="col-xs-12 col-sm-5 left-cocktail text-center">
+      <br>
+      <br>
+      <%= link_to  cocktail_path(@cocktail), method: :delete, data: {confirm: "Voulez vous vraiment supprimer ?"}, class:'btn btn-danger btn-sm' do %>
+        <i class="fa fa-trash-o"></i><span> Supprimer un cocktail</span>
+      <% end %>
+      <%= link_to  cocktails_path, class:'btn btn-primary btn-sm' do %>
+        <span>Retour au <i class="fa fa-glass"></i> sommaire</span>
+      <% end %>
+     </div>
+
+    <div class="col-xs-12 col-sm-5 dose-list">
+       <ul class="list-unstyled">
+         <% @cocktail.doses.each do |dose| %>
+          <li>
+           <p><strong><%= dose.description %></strong><span> of <%= dose.ingredient.name %></span>
+            <%= link_to dose_path(dose), method: :delete do %>
+            <i class="fa fa-trash trash-cocktail "></i>
+            <% end %>
+            </p>
+          </li>
+         <% end %>
+        </ul>
+     </div>
+
+     <div class="col-xs-12 col-sm-2">
+       <%= link_to new_cocktail_dose_path(@cocktail), class:'btn btn-success' do %>
+        <i class="fa fa-plus-circle"> Ajoutez un ingrédient </i>
+       <% end %>
+     </div>
+   </div> 
+</div>

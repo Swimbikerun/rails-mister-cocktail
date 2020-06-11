@@ -9,6 +9,10 @@ require 'json'
 require 'open-uri'
 
 Ingredient.destroy_all
+Cocktail.destroy_all
+Cocktail.create(name: "Margarita")
+Cocktail.create(name: "Gin Tonic")
+Cocktail.create(name: "Rhum")
 Ingredient.create(name: "lemon")
 Ingredient.create(name: "ice")
 Ingredient.create(name: "mint leaves")
@@ -21,3 +25,5 @@ user["drinks"].each do |ingredient|
   new_ingredient = Ingredient.new(name: ingredient["strIngredient1"])
   new_ingredient.save!
 end
+
+
