@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_100032) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "photo"
   end
 
   create_table "doses", force: :cascade do |t|
@@ -28,8 +27,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_100032) do
     t.integer "cocktail_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cocktail_id"], name: "index_doses_on_cocktail_id"
-    t.index ["ingredient_id"], name: "index_doses_on_ingredient_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -37,6 +34,5 @@ ActiveRecord::Schema.define(version: 2020_06_11_100032) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-  add_foreign_key "doses", "cocktails"
-  add_foreign_key "doses", "ingredients"
+
 end
